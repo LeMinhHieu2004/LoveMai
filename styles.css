@@ -896,3 +896,568 @@ body {
     opacity: 1 !important;
     display: block !important;
 }
+/* ...existing code... */
+
+/* Zalo Button Styling */
+.btn-zalo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #0068FF 0%, #0084FF 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 25px rgba(0, 104, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    min-width: 250px;
+    text-align: center;
+}
+
+/* Zalo icon */
+.btn-zalo i {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.btn-zalo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 104, 255, 0.4);
+    background: linear-gradient(135deg, #0056CC 0%, #0074E6 100%);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-zalo:active {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 20px rgba(0, 104, 255, 0.3);
+}
+
+.btn-zalo::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: width 0.6s, height 0.6s, top 0.6s, left 0.6s;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+.btn-zalo:hover::before {
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+}
+
+.btn-zalo * {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .btn-zalo {
+        min-width: 200px;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .cta-buttons .btn-zalo {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+.btn-zalo-alt {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 24px;
+    background: #0068FF;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border: 2px solid #0068FF;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-zalo-alt::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-zalo-alt:hover::before {
+    left: 100%;
+}
+
+.btn-zalo-alt:hover {
+    background: #004FCC;
+    border-color: #004FCC;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 104, 255, 0.3);
+    color: white;
+    text-decoration: none;
+}
+
+@keyframes vibrate {
+    0% { transform: translateY(-2px) rotate(0deg); }
+    25% { transform: translateY(-2px) rotate(0.5deg); }
+    50% { transform: translateY(-2px) rotate(0deg); }
+    75% { transform: translateY(-2px) rotate(-0.5deg); }
+    100% { transform: translateY(-2px) rotate(0deg); }
+}
+
+.btn-zalo:hover {
+    animation: vibrate 0.3s ease-in-out;
+}
+/* ...existing code... */
+
+/* ANIMATIONS & EFFECTS */
+
+/* Fade in from bottom animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade in from left */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Fade in from right */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scale animation */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Bounce animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(255, 107, 107, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+    }
+}
+
+/* Floating animation */
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Glow animation */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 107, 107, 0.8);
+    }
+}
+
+/* Shake animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Rotate animation */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* APPLY ANIMATIONS TO ELEMENTS */
+
+/* Header animations */
+.header {
+    animation: fadeInUp 1s ease-out;
+}
+
+.headline {
+    animation: fadeInLeft 1s ease-out 0.3s both;
+}
+
+.subheadline {
+    animation: fadeInLeft 1s ease-out 0.6s both;
+}
+
+.cta-buttons {
+    animation: fadeInUp 1s ease-out 0.9s both;
+}
+
+.product-image {
+    animation: floating 3s ease-in-out infinite;
+}
+
+/* Section animations */
+.section {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.section:nth-child(even) {
+    animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.section:nth-child(odd) {
+    animation: fadeInRight 0.8s ease-out forwards;
+}
+
+/* Benefits grid animations */
+.benefit-item {
+    opacity: 0;
+    animation: scaleIn 0.6s ease-out forwards;
+}
+
+.benefit-item:nth-child(1) { animation-delay: 0.1s; }
+.benefit-item:nth-child(2) { animation-delay: 0.2s; }
+.benefit-item:nth-child(3) { animation-delay: 0.3s; }
+.benefit-item:nth-child(4) { animation-delay: 0.4s; }
+
+.benefit-icon {
+    transition: all 0.3s ease;
+}
+
+.benefit-item:hover .benefit-icon {
+    animation: bounce 0.6s ease;
+    transform: scale(1.2);
+}
+
+/* Gallery animations */
+.gallery-item {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.gallery-item:nth-child(1) { animation-delay: 0.2s; }
+.gallery-item:nth-child(2) { animation-delay: 0.4s; }
+.gallery-item:nth-child(3) { animation-delay: 0.6s; }
+
+.gallery-image {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-image:hover {
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Testimonials animations */
+.testimonial {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.testimonial:nth-child(1) { animation-delay: 0.1s; }
+.testimonial:nth-child(2) { animation-delay: 0.3s; }
+.testimonial:nth-child(3) { animation-delay: 0.5s; }
+
+.testimonial:hover {
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+/* Button animations */
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+    animation: none;
+}
+
+.btn-primary:active {
+    animation: shake 0.5s ease;
+}
+
+/* Countdown animations */
+.countdown-number {
+    animation: pulse 1s infinite;
+    transition: all 0.3s ease;
+}
+
+.countdown-item:hover .countdown-number {
+    animation: bounce 0.6s ease;
+    color: #ff6b6b;
+}
+
+/* Stats animations */
+.stat-number {
+    opacity: 0;
+    animation: scaleIn 1s ease-out forwards;
+}
+
+.stat-item:nth-child(1) .stat-number { animation-delay: 0.2s; }
+.stat-item:nth-child(2) .stat-number { animation-delay: 0.4s; }
+.stat-item:nth-child(3) .stat-number { animation-delay: 0.6s; }
+
+/* Form animations */
+.form-group {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* FAQ animations */
+.faq-item {
+    opacity: 0;
+    animation: fadeInLeft 0.6s ease-out forwards;
+}
+
+.faq-item:nth-child(1) { animation-delay: 0.1s; }
+.faq-item:nth-child(2) { animation-delay: 0.2s; }
+.faq-item:nth-child(3) { animation-delay: 0.3s; }
+.faq-item:nth-child(4) { animation-delay: 0.4s; }
+.faq-item:nth-child(5) { animation-delay: 0.5s; }
+
+.faq-question:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+}
+
+/* Zalo button special effects */
+.btn-zalo {
+    animation: glow 2s infinite;
+}
+
+.btn-zalo:hover {
+    animation: pulse 0.6s ease;
+}
+
+/* Price animations */
+.original-price {
+    position: relative;
+    animation: shake 1s ease infinite;
+}
+
+.sale-price {
+    animation: pulse 1.5s infinite;
+    color: #ff6b6b;
+}
+
+.savings {
+    animation: bounce 2s infinite;
+}
+
+/* Scroll animations */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Background gradient animation */
+.benefits-section {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+/* Urgency section special effects */
+.urgency-section {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+    animation: glow 3s infinite;
+}
+
+.urgency-section h2 {
+    animation: shake 2s infinite;
+}
+
+/* Loading animation for images */
+.gallery-image {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.gallery-image.loaded {
+    opacity: 1;
+}
+
+/* Hover effects for all cards */
+.benefit-item,
+.testimonial,
+.gallery-item,
+.faq-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.benefit-item:hover,
+.testimonial:hover,
+.gallery-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    /* Reduce animations on mobile for performance */
+    .section {
+        animation-duration: 0.5s;
+    }
+    
+    .benefit-item,
+    .testimonial,
+    .gallery-item {
+        animation-duration: 0.4s;
+    }
+    
+    /* Disable floating animation on mobile */
+    .product-image {
+        animation: none;
+    }
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ...existing code... */
