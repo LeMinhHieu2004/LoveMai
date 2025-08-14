@@ -1352,7 +1352,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Zalo button special effects */
 .btn-zalo {
     animation: glow 2s infinite;
 }
@@ -1361,7 +1360,6 @@ body {
     animation: pulse 0.6s ease;
 }
 
-/* Price animations */
 .original-price {
     position: relative;
     animation: shake 1s ease infinite;
@@ -1376,7 +1374,6 @@ body {
     animation: bounce 2s infinite;
 }
 
-/* Scroll animations */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(50px);
@@ -1388,14 +1385,12 @@ body {
     transform: translateY(0);
 }
 
-/* Background gradient animation */
 .benefits-section {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
 }
 
-/* Urgency section special effects */
 .urgency-section {
     background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
     animation: glow 3s infinite;
@@ -1405,7 +1400,6 @@ body {
     animation: shake 2s infinite;
 }
 
-/* Loading animation for images */
 .gallery-image {
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -1415,7 +1409,6 @@ body {
     opacity: 1;
 }
 
-/* Hover effects for all cards */
 .benefit-item,
 .testimonial,
 .gallery-item,
@@ -1430,9 +1423,7 @@ body {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-/* Mobile optimizations */
 @media (max-width: 768px) {
-    /* Reduce animations on mobile for performance */
     .section {
         animation-duration: 0.5s;
     }
@@ -1443,13 +1434,11 @@ body {
         animation-duration: 0.4s;
     }
     
-    /* Disable floating animation on mobile */
     .product-image {
         animation: none;
     }
 }
 
-/* Disable animations for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -1459,5 +1448,449 @@ body {
         transition-duration: 0.01ms !important;
     }
 }
+/* ...existing code... */
+
+/* ===========================================
+   BLINKING & FLASHING BUTTON EFFECTS
+   =========================================== */
+
+/* Basic blinking animation */
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0.7;
+    }
+}
+
+/* Smooth pulse blinking */
+@keyframes smoothBlink {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.02);
+    }
+}
+
+/* Glow blink animation */
+@keyframes glowBlink {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+        opacity: 1;
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(255, 107, 107, 0.8);
+        opacity: 0.9;
+    }
+}
+
+/* Color change blink */
+@keyframes colorBlink {
+    0%, 100% {
+        background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    }
+    50% {
+        background: linear-gradient(45deg, #ee5a24, #ff6b6b);
+    }
+}
+
+/* Border blink animation */
+@keyframes borderBlink {
+    0%, 100% {
+        border: 3px solid transparent;
+    }
+    50% {
+        border: 3px solid #fff;
+    }
+}
+
+/* Scale blink animation */
+@keyframes scaleBlink {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Text shadow blink */
+@keyframes textBlink {
+    0%, 100% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* Rainbow blink effect */
+@keyframes rainbowBlink {
+    0% { background: linear-gradient(45deg, #ff6b6b, #ee5a24); }
+    20% { background: linear-gradient(45deg, #f093fb, #f5576c); }
+    40% { background: linear-gradient(45deg, #667eea, #764ba2); }
+    60% { background: linear-gradient(45deg, #ffecd2, #fcb69f); }
+    80% { background: linear-gradient(45deg, #a8edea, #fed6e3); }
+    100% { background: linear-gradient(45deg, #ff6b6b, #ee5a24); }
+}
+
+/* Flash animation */
+@keyframes flash {
+    0%, 100% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 0.3;
+    }
+}
+
+/* Urgent blink animation */
+@keyframes urgentBlink {
+    0%, 100% {
+        background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+        transform: scale(1);
+        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    }
+    50% {
+        background: linear-gradient(45deg, #ff0000, #cc0000);
+        transform: scale(1.03);
+        box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
+    }
+}
+
+/* ===========================================
+   APPLY BLINKING EFFECTS TO BUTTONS
+   =========================================== */
+
+/* Primary button with smooth blink */
+.btn-primary {
+    animation: 
+        smoothBlink 2s ease-in-out infinite,
+        glowBlink 3s ease-in-out infinite;
+}
+
+.btn-primary.urgent {
+    animation: urgentBlink 1s ease-in-out infinite;
+}
+
+.btn-primary.flash {
+    animation: flash 0.8s ease-in-out infinite;
+}
+
+.btn-primary.rainbow {
+    animation: rainbowBlink 4s ease-in-out infinite;
+}
+
+/* Secondary button with border blink */
+.btn-secondary {
+    animation: borderBlink 2.5s ease-in-out infinite;
+}
+
+/* Zalo button with glow blink */
+.btn-zalo {
+    animation: 
+        glowBlink 2s ease-in-out infinite,
+        scaleBlink 3s ease-in-out infinite;
+}
+
+/* Floating button with multiple effects */
+.btn-floating {
+    animation: 
+        smoothBlink 1.5s ease-in-out infinite,
+        glowBlink 2.5s ease-in-out infinite,
+        scaleBlink 2s ease-in-out infinite;
+}
+
+/* Special urgent buttons */
+.btn-urgent {
+    animation: urgentBlink 0.8s ease-in-out infinite !important;
+}
+
+/* Flash effect for important actions */
+.btn-flash {
+    animation: flash 1s ease-in-out infinite !important;
+}
+
+/* Gentle blink for less important buttons */
+.btn-gentle-blink {
+    animation: blink 3s ease-in-out infinite;
+}
+
+/* ===========================================
+   CONTEXTUAL BLINKING EFFECTS
+   =========================================== */
+
+/* Order button - urgent blinking */
+.order-section .btn-primary {
+    animation: 
+        urgentBlink 1.2s ease-in-out infinite,
+        textBlink 2s ease-in-out infinite;
+}
+
+/* Consultation button - gentle blinking */
+.consultation-section .btn-primary {
+    animation: 
+        smoothBlink 2.5s ease-in-out infinite,
+        glowBlink 3.5s ease-in-out infinite;
+}
+
+/* CTA buttons in header - rainbow effect */
+.header .btn-primary {
+    animation: 
+        rainbowBlink 5s ease-in-out infinite,
+        scaleBlink 2s ease-in-out infinite;
+}
+
+/* FAQ toggle buttons - soft blink */
+.faq-question {
+    animation: blink 4s ease-in-out infinite;
+}
+
+/* Countdown section buttons - urgent */
+.urgency-section .btn-primary {
+    animation: 
+        urgentBlink 0.8s ease-in-out infinite,
+        flash 1.5s ease-in-out infinite;
+}
+
+/* ===========================================
+   HOVER EFFECTS TO STOP BLINKING
+   =========================================== */
+
+/* Stop blinking on hover for better UX */
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-zalo:hover,
+.btn-floating:hover {
+    animation-play-state: paused;
+}
+
+/* ===========================================
+   ADDITIONAL BLINKING ELEMENTS
+   =========================================== */
+
+/* Price blinking */
+.sale-price {
+    animation: 
+        colorBlink 2s ease-in-out infinite,
+        scaleBlink 1.5s ease-in-out infinite;
+}
+
+/* Countdown numbers blinking */
+.countdown-number {
+    animation: 
+        textBlink 1s ease-in-out infinite,
+        smoothBlink 2s ease-in-out infinite;
+}
+
+/* Urgent text blinking */
+.urgency-text {
+    animation: flash 1s ease-in-out infinite;
+}
+
+/* Badge icons blinking */
+.trust-badges .badge i {
+    animation: glowBlink 3s ease-in-out infinite;
+}
+
+/* ===========================================
+   CUSTOM BLINK CLASSES
+   =========================================== */
+
+/* Use these classes to add blinking to any element */
+.blink-slow {
+    animation: blink 3s ease-in-out infinite;
+}
+
+.blink-fast {
+    animation: blink 0.5s ease-in-out infinite;
+}
+
+.blink-smooth {
+    animation: smoothBlink 2s ease-in-out infinite;
+}
+
+.blink-glow {
+    animation: glowBlink 2.5s ease-in-out infinite;
+}
+
+.blink-urgent {
+    animation: urgentBlink 1s ease-in-out infinite;
+}
+
+.blink-rainbow {
+    animation: rainbowBlink 4s ease-in-out infinite;
+}
+
+.blink-flash {
+    animation: flash 0.8s ease-in-out infinite;
+}
+
+.blink-scale {
+    animation: scaleBlink 2s ease-in-out infinite;
+}
+
+/* ===========================================
+   RESPONSIVE BLINKING
+   =========================================== */
+
+/* Reduce blinking on mobile for better performance */
+@media (max-width: 768px) {
+    .btn-primary,
+    .btn-secondary,
+    .btn-zalo,
+    .btn-floating {
+        animation-duration: 3s;
+    }
+    
+    /* Disable complex animations on small screens */
+    .btn-primary.rainbow,
+    .header .btn-primary {
+        animation: smoothBlink 3s ease-in-out infinite;
+    }
+}
+
+/* Disable blinking for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .btn-primary,
+    .btn-secondary,
+    .btn-zalo,
+    .btn-floating,
+    .sale-price,
+    .countdown-number {
+        animation: none !important;
+    }
+}
+
+/* ===========================================
+   SPECIAL BUTTON STATES
+   =========================================== */
+
+/* Loading state - different blink */
+.btn-primary.loading {
+    animation: flash 0.5s ease-in-out infinite;
+}
+
+/* Success state - gentle green blink */
+.btn-primary.success {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    animation: smoothBlink 2s ease-in-out infinite;
+}
+
+/* Error state - red urgent blink */
+.btn-primary.error {
+    background: linear-gradient(45deg, #dc3545, #c82333);
+    animation: urgentBlink 0.8s ease-in-out infinite;
+}
+
+/* Warning state - yellow blink */
+.btn-primary.warning {
+    background: linear-gradient(45deg, #ffc107, #e0a800);
+    animation: flash 1.2s ease-in-out infinite;
+}
+
+/* ===========================================
+   BLINKING TEXT EFFECTS
+   =========================================== */
+
+/* For important text that needs attention */
+.blink-text {
+    animation: textBlink 2s ease-in-out infinite;
+}
+
+.flash-text {
+    animation: flash 1s ease-in-out infinite;
+}
+
+.urgent-text {
+    color: #fff;
+    animation: 
+        colorBlink 1.5s ease-in-out infinite,
+        textBlink 2s ease-in-out infinite;
+}
+
+/* ===========================================
+   ATTENTION-GRABBING EFFECTS
+   =========================================== */
+
+/* Combo effect for maximum attention */
+.maximum-attention {
+    animation: 
+        urgentBlink 0.8s ease-in-out infinite,
+        scaleBlink 1.2s ease-in-out infinite,
+        glowBlink 1.5s ease-in-out infinite;
+}
+
+/* Subtle attention for secondary elements */
+.subtle-attention {
+    animation: 
+        smoothBlink 4s ease-in-out infinite,
+        glowBlink 6s ease-in-out infinite;
+}
+
+/* Pulsing notification effect */
+.notification-pulse {
+    animation: 
+        pulse 1.5s ease-in-out infinite,
+        glowBlink 2s ease-in-out infinite;
+}
+
+/* ===========================================
+   PERFORMANCE OPTIMIZATIONS
+   =========================================== */
+
+/* Optimize animations for better performance */
+.btn-primary,
+.btn-secondary,
+.btn-zalo,
+.btn-floating {
+    will-change: transform, opacity, box-shadow;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* Pause animations when not visible */
+.hidden-section .btn-primary,
+.hidden-section .btn-secondary,
+.hidden-section .btn-zalo {
+    animation-play-state: paused;
+}
 
 /* ...existing code... */
+/* ...existing code... */
+
+/* ===========================================
+   LOW PERFORMANCE OPTIMIZATIONS
+   =========================================== */
+
+.low-performance .btn-primary,
+.low-performance .btn-secondary,
+.low-performance .btn-zalo {
+    animation-duration: 3s !important;
+}
+
+.low-performance .maximum-attention,
+.low-performance .rainbow,
+.low-performance .urgentBlink {
+    animation: blink 3s ease-in-out infinite !important;
+}
+
+/* Battery saving mode */
+@media (max-device-width: 768px) and (orientation: portrait) {
+    .btn-primary,
+    .btn-secondary,
+    .btn-zalo {
+        animation-duration: 4s;
+    }
+}
+

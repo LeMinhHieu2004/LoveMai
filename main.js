@@ -576,3 +576,241 @@ function resetButton(submitButton, originalText) {
     submitButton.disabled = false;
     submitButton.classList.remove('loading');
 }
+// ...existing code...
+
+// ===========================================
+// BLINKING EFFECTS CONTROL
+// ===========================================
+
+// Add blinking effects based on context
+function initBlinkingEffects() {
+    // Add urgent blinking to order buttons
+    const orderButtons = document.querySelectorAll('.order-section .btn-primary');
+    orderButtons.forEach(btn => {
+        btn.classList.add('btn-urgent');
+    });
+    
+    // Add rainbow effect to header buttons
+    const headerButtons = document.querySelectorAll('.header .btn-primary');
+    headerButtons.forEach(btn => {
+        btn.classList.add('rainbow');
+    });
+    
+    // Add flash effect to countdown buttons
+    const countdownButtons = document.querySelectorAll('.urgency-section .btn-primary');
+    countdownButtons.forEach(btn => {
+        btn.classList.add('flash');
+    });
+    
+    // Add gentle blink to consultation buttons
+    const consultButtons = document.querySelectorAll('.consultation-section .btn-primary');
+    consultButtons.forEach(btn => {
+        btn.classList.add('gentle-blink');
+    });
+}
+
+// Dynamic blinking based on time/urgency
+function initUrgencyBlinking() {
+    const orderButtons = document.querySelectorAll('.btn-primary');
+    
+    // Increase blinking speed as countdown gets lower
+    function updateBlinkingSpeed() {
+        const countdownElement = document.querySelector('.countdown-number');
+        if (countdownElement) {
+            const timeLeft = parseInt(countdownElement.textContent);
+            
+            orderButtons.forEach(btn => {
+                if (timeLeft < 10) {
+                    btn.style.animationDuration = '0.3s';
+                    btn.classList.add('maximum-attention');
+                } else if (timeLeft < 30) {
+                    btn.style.animationDuration = '0.6s';
+                    btn.classList.add('btn-urgent');
+                } else {
+                    btn.style.animationDuration = '2s';
+                    btn.classList.add('blink-smooth');
+                }
+            });
+        }
+    }
+    
+    // Update every second
+    setInterval(updateBlinkingSpeed, 1000);
+}
+
+// Control blinking on scroll
+function initScrollBlinking() {
+    const sections = document.querySelectorAll('.section');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const buttons = entry.target.querySelectorAll('.btn-primary, .btn-secondary');
+            
+            if (entry.isIntersecting) {
+                // Start blinking when section is visible
+                buttons.forEach(btn => {
+                    btn.style.animationPlayState = 'running';
+                });
+            } else {
+                // Pause blinking when section is not visible
+                buttons.forEach(btn => {
+                    btn.style.animationPlayState = 'paused';
+                });
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+}
+
+// Add blinking to important elements
+function addContextualBlinking() {
+    // Price elements
+    const priceElements = document.querySelectorAll('.sale-price');
+    priceElements.forEach(price => {
+        price.classList.add('blink-glow');
+    });
+    
+    // Savings text
+    const savingsElements = document.querySelectorAll('.savings');
+    savingsElements.forEach(saving => {
+        saving.classList.add('blink-smooth');
+    });
+    
+    // Urgent text
+    const urgentTexts = document.querySelectorAll('.urgency-section h2, .urgency-section h3');
+    urgentTexts.forEach(text => {
+        text.classList.add('urgent-text');
+    });
+    
+    // Trust badges
+    const badges = document.querySelectorAll('.trust-badges .badge i');
+    badges.forEach(badge => {
+        badge.classList.add('blink-glow');
+    });
+}
+
+// Button interaction effects
+function initButtonInteractions() {
+    const allButtons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-zalo');
+    
+    allButtons.forEach(button => {
+        // Stop blinking on hover
+        button.addEventListener('mouseenter', function() {
+            this.style.animationPlayState = 'paused';
+        });
+        
+        // Resume blinking on mouse leave
+        button.addEventListener('mouseleave', function() {
+            this.style.animationPlayState = 'running';
+        });
+        
+        // Flash effect on click
+        button.addEventListener('click', function() {
+            this.classList.add('flash');
+            
+            setTimeout(() => {
+                this.classList.remove('flash');
+            }, 2000);
+        });
+    });
+}
+
+// Dynamic blinking patterns
+function initDynamicBlinking() {
+    const buttons = document.querySelectorAll('.btn-primary');
+    
+    // Randomly change blinking patterns
+    setInterval(() => {
+        buttons.forEach(button => {
+            const patterns = ['blink-smooth', 'blink-glow', 'blink-scale', 'subtle-attention'];
+            const randomPattern = patterns[Math.floor(Math.random() * patterns.length)];
+            
+            // Remove old patterns
+            patterns.forEach(pattern => button.classList.remove(pattern));
+            
+            // Add new pattern
+            button.classList.add(randomPattern);
+        });
+    }, 10000); // Change every 10 seconds
+}
+
+// Special effects for different times of day
+function initTimeBasedBlinking() {
+    const hour = new Date().getHours();
+    const allButtons = document.querySelectorAll('.btn-primary');
+    
+    if (hour >= 18 || hour <= 6) {
+        // Evening/Night - more urgent blinking
+        allButtons.forEach(btn => {
+            btn.classList.add('urgent-blink');
+        });
+    } else if (hour >= 12 && hour <= 14) {
+        // Lunch time - gentle blinking
+        allButtons.forEach(btn => {
+            btn.classList.add('gentle-blink');
+        });
+    } else {
+        // Normal hours - standard blinking
+        allButtons.forEach(btn => {
+            btn.classList.add('blink-smooth');
+        });
+    }
+}
+
+// Initialize all blinking effects
+document.addEventListener('DOMContentLoaded', function() {
+    // ... existing code ...
+    
+    // Initialize blinking effects
+    initBlinkingEffects();
+    initUrgencyBlinking();
+    initScrollBlinking();
+    addContextualBlinking();
+    initButtonInteractions();
+    initTimeBasedBlinking();
+    
+    // Delay dynamic blinking to avoid overwhelming users
+    setTimeout(initDynamicBlinking, 5000);
+});
+
+// Performance monitoring for animations
+function monitorBlinkingPerformance() {
+    let frameCount = 0;
+    let lastTime = performance.now();
+    
+    function countFrames() {
+        frameCount++;
+        const currentTime = performance.now();
+        
+        if (currentTime - lastTime >= 1000) {
+            const fps = Math.round((frameCount * 1000) / (currentTime - lastTime));
+            
+            // If FPS is too low, reduce blinking effects
+            if (fps < 30) {
+                document.body.classList.add('low-performance');
+                
+                // Simplify animations
+                const complexButtons = document.querySelectorAll('.maximum-attention, .rainbow');
+                complexButtons.forEach(btn => {
+                    btn.className = btn.className.replace(/maximum-attention|rainbow/g, 'blink-smooth');
+                });
+            }
+            
+            frameCount = 0;
+            lastTime = currentTime;
+        }
+        
+        requestAnimationFrame(countFrames);
+    }
+    
+    requestAnimationFrame(countFrames);
+}
+
+// Start performance monitoring
+monitorBlinkingPerformance();
+
